@@ -5,8 +5,8 @@ from datetime import date
 # ---- CONFIG ----
 # ---- CONFIG ----
 WIDTH, HEIGHT = 1170, 2532
-BG_COLOR = "#000000"
-PRIMARY = "#58855C"
+BG_COLOR = "#58855C"
+PRIMARY = "#000000"
 
 TITLE_SIZE = 96
 DAY_SIZE = 56
