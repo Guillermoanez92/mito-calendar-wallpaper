@@ -3,9 +3,14 @@ import calendar
 from datetime import date
 
 # ---- CONFIG ----
-WIDTH, HEIGHT = 1170, 2532  # iPhone wallpaper resolution
+# ---- CONFIG ----
+WIDTH, HEIGHT = 1170, 2532
 BG_COLOR = "#000000"
 PRIMARY = "#58855C"
+
+TITLE_SIZE = 96
+DAY_SIZE = 56
+TODAY_SIZE = 64
 
 def load_font(size):
     try:
