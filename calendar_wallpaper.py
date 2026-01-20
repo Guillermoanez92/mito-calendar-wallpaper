@@ -41,9 +41,7 @@ first_weekday = calendar.monthrange(year, month)[0]
 img = Image.new("RGB", (WIDTH, HEIGHT), BG_COLOR)
 draw = ImageDraw.Draw(img)
 
-title_font = ImageFont.truetype(FONT_PATH, TITLE_SIZE)
-day_font = ImageFont.truetype(FONT_PATH, DAY_SIZE)
-today_font = ImageFont.truetype(FONT_PATH, TODAY_SIZE)
+
 
 # ---- TITLE ----
 title_text = f"{month_name.upper()} {year}"
