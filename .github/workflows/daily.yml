@@ -1,0 +1,33 @@
+name: Daily Calendar Wallpaper
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # runs daily at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate wallpaper
+        run: python calendar_wallpaper.py
+
+      - name: Commit updated image
+        run: |
+          git config user.name "calendar-bot"
+          git config user.email "bot@calendar"
+          git add calendar_wallpaper.png
+          git commit -m "Daily calendar update" || echo "No changes"
+          git push
