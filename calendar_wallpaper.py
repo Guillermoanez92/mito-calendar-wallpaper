@@ -7,10 +7,19 @@ WIDTH, HEIGHT = 1170, 2532  # iPhone wallpaper resolution
 BG_COLOR = "#000000"
 PRIMARY = "#58855C"
 
-FONT_PATH = "/System/Library/Fonts/SFNS.ttf"  # macOS system font
-TITLE_SIZE = 96
-DAY_SIZE = 56
-TODAY_SIZE = 64
+def load_font(size):
+    try:
+        return ImageFont.truetype("SFNS.ttf", size)
+    except:
+        try:
+            return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size)
+        except:
+            return ImageFont.load_default()
+
+title_font = load_font(TITLE_SIZE)
+day_font = load_font(DAY_SIZE)
+today_font = load_font(TODAY_SIZE)
+
 
 OUTPUT = "calendar_wallpaper.png"
 
