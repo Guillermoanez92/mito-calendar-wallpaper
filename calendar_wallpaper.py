@@ -1,9 +1,11 @@
 from PIL import Image, ImageDraw, ImageFont
 import calendar
-from datetime import datetime
+
 from zoneinfo import ZoneInfo
 
-today = datetime.now(ZoneInfo("America/Mexico_City"))
+now = datetime.now(ZoneInfo("America/Mexico_City"))
+today = now.date()
+
 
 
 # ---- CONFIG ----
@@ -35,7 +37,7 @@ OUTPUT = "calendar_wallpaper.png"
 
 
 # ---- DATE ----
-today = date.today()
+
 year, month, day = today.year, today.month, today.day
 month_name = calendar.month_name[month]
 month_days = calendar.monthrange(year, month)[1]
