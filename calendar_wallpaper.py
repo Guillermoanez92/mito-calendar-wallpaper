@@ -6,7 +6,7 @@ from datetime import date
 # ---- CONFIG ----
 WIDTH, HEIGHT = 1170, 2532
 BG_COLOR = "#58855C"
-PRIMARY = "#FFFFFF"
+PRIMARY = "#000000"
 
 TITLE_SIZE = 96
 DAY_SIZE = 56
@@ -65,7 +65,7 @@ for d in range(1, month_days + 1):
     y = start_y + row * cell_h
 
     if d < day:
-        color = "#2986cc"
+        color = "#888888"
         font = day_font
     elif d == day:
         color = PRIMARY
@@ -76,7 +76,7 @@ for d in range(1, month_days + 1):
             width=4
         )
     else:
-        color = "#888888"
+        color = "#58855C"
         font = day_font
 
     text = str(d)
