@@ -76,7 +76,7 @@ for d in range(1, month_days + 1):
             width=4
         )
     else:
-        color = "#58855C"
+        color = "#000000"
         font = day_font
 
     text = str(d)
