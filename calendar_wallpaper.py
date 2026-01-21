@@ -54,7 +54,7 @@ draw.text(((WIDTH - tw) / 2, 200), title_text, PRIMARY, font=title_font)
 cols = 7
 cell_w = WIDTH // cols
 cell_h = 120
-start_y = 800
+start_y = HEIGHT / 2
 
 for d in range(1, month_days + 1):
     idx = d + first_weekday - 1
