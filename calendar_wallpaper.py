@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import calendar
 
+from datetime import datetime
 from zoneinfo import ZoneInfo
 
 now = datetime.now(ZoneInfo("America/Mexico_City"))
