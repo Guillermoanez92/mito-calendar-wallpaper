@@ -2,7 +2,7 @@ name: Daily Calendar Wallpaper
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # runs daily at 06:00 UTC
+    - cron: "2 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -11,23 +11,25 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install pillow
 
-      - name: Generate wallpaper
-        run: python calendar_wallpaper.py
+      - name: Generate calendar wallpaper
+        run: |
+          python calendar_wallpaper.py
 
-      - name: Commit updated image
+      - name: Commit updated wallpaper
         run: |
           git config user.name "calendar-bot"
-          git config user.email "bot@calendar"
+          git config user.email "calendar-bot@users.noreply.github.com"
           git add calendar_wallpaper.png
-          git commit -m "Daily calendar update" || echo "No changes"
+          git diff --cached --quiet || git commit -m "Daily calendar update"
           git push
