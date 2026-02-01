@@ -5,7 +5,12 @@ from renderer.calendar import render_calendar
 
 def main(request):
     try:
-        body = json.loads(request.body or "{}")
+        # Support both GET and POST
+        if request.method == "POST":
+            body = json.loads(request.body or "{}")
+        else:
+            body = {}
+
         timezone = body.get("timezone", "America/Mexico_City")
 
         image_bytes = render_calendar(timezone)
@@ -14,7 +19,8 @@ def main(request):
         return {
             "statusCode": 200,
             "headers": {
-                "Content-Type": "image/png"
+                "Content-Type": "image/png",
+                "Content-Disposition": "inline; filename=calendar.png",
             },
             "body": encoded,
             "isBase64Encoded": True,
@@ -24,5 +30,5 @@ def main(request):
         return {
             "statusCode": 500,
             "headers": {"Content-Type": "text/plain"},
-            "body": f"Error: {str(e)}",
+            "body": str(e),
         }
