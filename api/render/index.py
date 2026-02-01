@@ -5,7 +5,6 @@ from renderer.calendar import render_calendar
 
 def main(request):
     try:
-        # Support both GET and POST
         if request.method == "POST":
             body = json.loads(request.body or "{}")
         else:
