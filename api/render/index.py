@@ -1,4 +1,5 @@
 import json
+import base64
 from renderer.calendar import render_calendar
 
 
@@ -8,14 +9,15 @@ def main(request):
         timezone = body.get("timezone", "America/Mexico_City")
 
         image_bytes = render_calendar(timezone)
+        encoded = base64.b64encode(image_bytes).decode("utf-8")
 
         return {
             "statusCode": 200,
             "headers": {
                 "Content-Type": "image/png"
             },
-            "body": image_bytes,
-            "isBase64Encoded": False,
+            "body": encoded,
+            "isBase64Encoded": True,
         }
 
     except Exception as e:
