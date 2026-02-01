@@ -1,4 +1,4 @@
-def handler(request):
+def main(request):
     return {
         "statusCode": 200,
         "headers": {
